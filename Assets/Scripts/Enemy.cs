@@ -57,14 +57,15 @@ public class Enemy : MonoBehaviour
         }
         if (distance < scareDistance)
         {
-            game.gameOver();
-            //enabled = false;
+            game.gameOver("Lost");
+            target.GetComponent<FirstPersonMovement>().gameStopped();
+            enabled = false;
         }
     }
     public void difficulty()
     {
         viewDistance+=1.5f;
         patrolDistance += 2;
-        transform.GetComponent<NavMeshAgent>().speed += 0.4f;
+        transform.GetComponent<NavMeshAgent>().speed += 0.5f;
     }
 }

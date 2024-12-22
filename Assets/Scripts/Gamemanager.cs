@@ -10,7 +10,9 @@ public class Gamemanager : MonoBehaviour
     public TMP_Text booksText;
     public TMP_Text doorText;
     public TMP_Text objectiveText;
+    public TMP_Text endText;
     public GameObject bookIcon;
+    public Image background;
 
     public Enemy enemy;
 
@@ -87,9 +89,19 @@ public class Gamemanager : MonoBehaviour
             nextObjective();
         }
     }
-    public void gameOver()
+    public void gameOver(string status)
     {
-
+        background.gameObject.SetActive(true);
+        endText.gameObject.SetActive(true);
+        if(status == "Escaped")
+        {
+            endText.text = "You escaped";
+        }
+        else
+        {
+            endText.text = "You died.";
+        }
+        
     }
     public void cantUnlockDoorText()
     {

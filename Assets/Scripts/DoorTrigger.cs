@@ -8,6 +8,7 @@ public class DoorTrigger : MonoBehaviour
 {
     public Transform door;
     public Gamemanager game;
+    public Transform Player;
 
     float animationTime = 2f;
     bool animationProcess = false;
@@ -57,5 +58,10 @@ public class DoorTrigger : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         standing = false;
+        if (Player.position.x < 23.5f)
+        {
+            Player.GetComponent<FirstPersonMovement>().gameStopped();
+            game.gameOver("Escaped");
+        }
     }
 }
